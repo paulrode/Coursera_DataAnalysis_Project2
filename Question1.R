@@ -25,7 +25,7 @@ idx <- sample(nrow(nei), 100)
 nei %>% group_by(year) %>% summarise(pmtons = sum(Emissions), pmmean = mean(Emissions)) -> nei1
 dim(nei1)
 nei1
-boxplot(log2(pmtons~year), data = nei1)
+boxplot(log2(pmtons)~year, data = nei1)
 boxplot(Emissions~year, data = nei)
 summary(nei1)
 
