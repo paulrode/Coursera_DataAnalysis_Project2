@@ -1,9 +1,8 @@
 setup()
 
 # Have total emissions from PM2.5 decreased in the Baltimore City, 
-# Maryland (\color{red}{\verb|fips == "24510"|}fips == "24510") from 
-# 1999 to 2008? Use the base plotting system to make a plot answering 
-# this question.
+# Maryland (fips == "24510") from 1999 to 2008? Use the base 
+# plotting system to make a plot answering this question.
 
 # List files and pull in data
 list.files("./data")
@@ -15,16 +14,17 @@ str(nei)
 summary(nei)
 head(nei)
 
-scc <- readRDS("./data/Source_Classification_Code.rds")
-dim(scc)
-str(scc)
-head(scc)
+nei2 <- nei[nei$fips == "24510", ]
+dim(nei2)
+str(nei2)
+head(nei2)
 
-idx <- sample(nrow(nei), 100)
+nei2 %>% group_by(year) %>% summarise(pm_tons = sum(Emissions), pm_mean = mean(Emissions)) -> nei2
+dim(nei2)
+nei2
+with(nei2, plot(year, pm_tons, ylab = "total pm tons"), xlab = "year", main = "Question1")
+with(nei2, lines(year, pm_tons))
+title("Question 2", "Baltimore City")
 
 
-nei %>% group_by(year) %>% summarise(pmtons = sum(Emissions), pmmean = mean(Emissions)) -> nei1
-dim(nei1)
-nei1
-boxplot(log2(pmtons)~year, data = nei1)
-boxplot(Emissions~year, data = nei)
+
