@@ -29,6 +29,12 @@ with(nei1, plot(year, pm_tons, ylab = "total pm tons"), xlab = "year", main = "Q
 with(nei1, lines(year, pm_tons))
 title("Question 1")
 
-
-
-
+view(scc$Short.Name)
+view(scc$EI.Sector)
+scc$Option.Group
+scc$Option.Set
+scc$SCC.Level.One
+scc$SCC.Level.Two
+scc$SCC.Level.Three
+scc$SCC.Level.Four
+scc$Map.To
