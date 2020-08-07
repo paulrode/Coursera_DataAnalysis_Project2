@@ -10,11 +10,15 @@ dim(nei)
 str(nei)
 
 nei %>% filter(fips == "24510",  )%>% group_by(year, type ) %>% 
-  summarise(pm_tons = sum(Emissions)) %>% 
-  spread( type, pm_tons ) -> nei2
+  summarise(pm_tons = sum(Emissions)) -> nei2 
+nei2 %>% spread( type, pm_tons ) -> nei3
+str(nei2)
 
-ggplot(data = nei2, aes(year, pm_tons)) +
-  points(aes(x = year, y = NON-ROAD))
+ggplot(data = nei2, aes(x=year, y=`pm_tons`, col=`type`)) +
+  geom_line()
+ 
+
+
 
 
     

@@ -7,9 +7,17 @@ nei <- readRDS("./data/summarySCC_PM25.rds")
 dim(nei)
 str(nei)
 summary(nei)
-head(nei)
 
-nei %>% filter(fips == "24510" )%>% group_by(year) %>% 
+scc <- readRDS("./data/Source_Classification_Code.rds")
+dim(scc)
+str(scc)
+head(scc)
+
+Coal <- filter(scc, grepl("Coal", Short.Name))
+str(Coal)
+Coal
+
+nei %>% filter(Coal %in% "" )%>% group_by(year) %>% 
   summarise(pm_tons = sum(Emissions), pm_mean = mean(Emissions)) -> nei2
 dim(nei2)
 nei2
