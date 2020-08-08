@@ -17,14 +17,15 @@ coal <- filter(scc, grepl("coal", Short.Name))
 dim(coal)
 glimpse(coal)
 
-nei %>% filter(fips == "24510",  ) %>% 
-  semi_join(coal, by="SCC") -> nei3
+nei %>% filter(fips == "24510",  ) %>%   semi_join(coal, by="SCC") -> nei3
 dim(nei3)
 glimpse(nei3)
 nei3 
 
-ggplot(data = nei3, aes(x=year, y=Emissions, col=type)) +
-  geom_line()
+ggplot(data = nei3, aes(x=year, y=Emissions)) +
+  geom_col() +
+  labs(title = "Question 4", subtitle = "Explortoty Data") +
+  theme_light()
 
 
 

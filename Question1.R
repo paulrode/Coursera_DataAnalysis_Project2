@@ -12,7 +12,7 @@ nei <- readRDS("./data/summarySCC_PM25.rds")
 dim(nei)
 str(nei)
 summary(nei)
-head(nei)
+
 
 scc <- readRDS("./data/Source_Classification_Code.rds")
 dim(scc)
