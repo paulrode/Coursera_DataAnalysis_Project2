@@ -16,7 +16,7 @@ dim(nei2)
 nei2
 with(nei2, plot(year, pm_tons, ylab = "total pm tons"), xlab = "year", main = "Question1")
 with(nei2, lines(year, pm_tons))
-title("Question 2", "Baltimore City")
+title("Plot 2", "Baltimore City")
 
 
 

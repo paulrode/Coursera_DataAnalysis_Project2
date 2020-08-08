@@ -25,7 +25,7 @@ glimpse(nei3)
 
 ggplot(data = nei3, aes(x=year, y=Emissions )) +
   geom_col() +
-  labs(title = "Question 5", subtitle = "Explortoty Data") +
+  labs(title = "Plot  5", subtitle = "Explortoty Data") +
   theme_light()
 
 

@@ -14,8 +14,9 @@ nei %>% filter(fips == "24510",  )%>% group_by(year, type ) %>%
 nei2 %>% spread( type, pm_tons ) -> nei3
 str(nei2)
 
-ggplot(data = nei2, aes(x=year, y=`pm_tons`, col=`type`)) +
-  geom_line()
+ggplot(data = nei2, aes(x=year, y=`pm_tons`, col=`type`), xlab="Year", ylab="Emissions") +
+  geom_line() +
+  labs(title = "Plot 3")
  
 
 
