@@ -18,6 +18,7 @@ dim(coal)
 glimpse(coal)
 
 nei %>% filter(fips == "24510",  ) %>%   semi_join(coal, by="SCC") -> nei3
+nei3$year <- as.character(nei$year)
 dim(nei3)
 glimpse(nei3)
 nei3 
