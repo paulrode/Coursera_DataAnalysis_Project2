@@ -6,24 +6,25 @@ setup()
 nei <- readRDS("./data/summarySCC_PM25.rds")
 dim(nei)
 str(nei)
+glimpse(nei)
 summary(nei)
 
 scc <- readRDS("./data/Source_Classification_Code.rds")
 dim(scc)
-str(scc)
-head(scc)
+glimpse(scc)
 
-Coal <- filter(scc, grepl("Coal", Short.Name))
-str(Coal)
-Coal
+coal <- filter(scc, grepl("coal", Short.Name))
+dim(coal)
+glimpse(coal)
 
-nei %>% filter(Coal %in% "" )%>% group_by(year) %>% 
-  summarise(pm_tons = sum(Emissions), pm_mean = mean(Emissions)) -> nei2
-dim(nei2)
-nei2
-with(nei2, plot(year, pm_tons, ylab = "total pm tons"), xlab = "year", main = "Question1")
-with(nei2, lines(year, pm_tons))
-title("Question 2", "Baltimore City")
+nei %>% filter(fips == "24510",  ) %>% 
+  semi_join(coal, by="SCC") -> nei3
+dim(nei3)
+glimpse(nei3)
+nei3 
+
+ggplot(data = nei3, aes(x=year, y=Emissions, col=type)) +
+  geom_line()
 
 
 
